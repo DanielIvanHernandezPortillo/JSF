@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.sportFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.sportListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{deporteBean.iniciar()}"></p:commandButton>
+
+                </h:form>
+                <p:dataTable value="#{deporteBean.deportes}" var="d">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{deporteBean.editar(d)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+
+                    <p:column headerText="#{str.idSportHeader}">
+                        <p:outputLabel value="#{d.idDeporte}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.nameSportHeader}">
+                        <p:outputLabel value="#{d.nombre}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.naciFormTitle}">
+                        <p:outputLabel value="#{d.nacionalidad}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.numdHeader}">
+                        <p:outputLabel value="#{d.numeroJugador}"></p:outputLabel>
+                    </p:column>
+                </p:dataTable>
+            </ui:define>   
+        </ui:composition>
+    </h:body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>#{str.sportFormTitle}</title>
+    </h:head> 
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name ="contenido">
+                <h2>#{str.formSportHeader}</h2>
+                <p:fieldset legend="#{str.legendSportForm}">
+                    <h:form> 
+                        <h:panelGrid columns="1">
+                           
+                            <p:inputText placeholder="#{str.nameSportHeader}"
+                                         value="#{deporteBean.deporte.nombre}"></p:inputText>
+                                         <p:inputText placeholder="#{str.nameNatioHeader}"
+                                         value="#{deporteBean.deporte.nacionalidad}"></p:inputText>
+                                         <p:inputText placeholder="#{str.numdHeader}"
+                                        value="#{deporteBean.deporte.numeroJugador}"></p:inputText>
+                        </h:panelGrid>
+                        <p:commandButton value="#{str.buttonSave}"
+                                         action="#{deporteBean.guardar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonDelete}"
+                                         action="#{deporteBean.eliminar()}"></p:commandButton>
+                        <p:commandButton value="#{str.buttonCancel}"
+                                         action="#{deporteBean.cancelar()}"></p:commandButton>
+                    </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

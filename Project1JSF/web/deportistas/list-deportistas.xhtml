@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.athletesListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.athletesListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{deportistaBean.iniciar()}"></p:commandButton>                          
+                </h:form>
+                <p:dataTable value="#{deportistaBean.deportistas}" var="d">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{deportistaBean.editar(d)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.idAthletHeader}">
+                        <p:outputLabel value="#{d.idDeportista}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.nameAthletPrompt}">
+                        <p:outputLabel value="#{d.nombreDeportista}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.apeAthletPrompt}">
+                        <p:outputLabel value="#{d.apellidoDeportista}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.ageDeportista}">
+                         <p:outputLabel value="#{d.edad}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.sportNamePrompt}">
+                        <p:outputLabel value="#{d.deporte.nombre}"></p:outputLabel>
+                    </p:column>
+                    
+                    
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
